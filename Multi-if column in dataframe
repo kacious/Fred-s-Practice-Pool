@@ -1,0 +1,20 @@
+def flag_df(df):
+
+    if (df['trigger1'] <= df['score'] < df['trigger2']) and (df['height'] < 8):
+        return 'Red'
+    elif (df['trigger2'] <= df['score'] < df['trigger3']) and (df['height'] < 8):
+        return 'Yellow'
+    elif (df['trigger3'] <= df['score']) and (df['height'] < 8):
+        return 'Orange'
+    elif (df['height'] > 8):
+        return np.nan
+
+df2['Flag'] = df2.apply(flag_df, axis = 1)
+
+    student score   height  trigger1    trigger2    trigger3    Flag
+0   A       100     7       84          99          114         Yellow
+1   B       96      4       95          110         125         Red
+2   C       80      9       15          30          45          NaN
+3   D       105     5       78          93          108         Yellow
+4   E       156     3       16          31          46          Orange
+
